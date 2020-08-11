@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>erc_jetson_bringup</name>
+  <version>0.0.0</version>
+  <description>The erc_jetson_bringup package</description>
+
+  <maintainer email="blazej@turtlerover.com">Błażej Software</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>zed_wrapper</exec_depend>
+
+</package>
