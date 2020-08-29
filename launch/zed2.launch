@@ -1,39 +1,14 @@
 <launch>
 
-  <param name="zed2_description"
-         command="xacro '$(find zed_wrapper)/urdf/zed_descr.urdf.xacro'
-                    camera_name:=zed2
-                    camera_model:=zed2
-                    base_frame:=base_link
-                    cam_pos_x:=0.05
-                    cam_pos_y:=0.0
-                    cam_pos_z:=0.1
-                    cam_roll:=0.0
-                    cam_pitch:=0.5
-                    cam_yaw:=0.0"/>
-
-  <node name="zed2_state_publisher"
-        pkg="robot_state_publisher"
-        type="robot_state_publisher"
-        output="screen">
-    <remap from="robot_description" to="zed2_description" />
+  <node name="zed2"
+        pkg="zed_wrapper"
+        type="zed_wrapper_node"
+        respawn="true">
+    <rosparam command="load" file="$(find erc_jetson_bringup)/config/zed2.yaml"/>
   </node>
 
-  <!-- Nodelet Manager -->
-  <node name="zed_nodelet_manager"
-        pkg="nodelet"
-        type="nodelet"
-        args="manager"
-        output="screen" />
-
-  <!-- Load ZED wrapper nodelet -->
-  <node name="zed2_nodelet"
-        pkg="nodelet"
-        type="nodelet"
-        args="load zed_nodelets/ZEDWrapperNodelet zed_notelet_manager"
-        output="screen">
-    <rosparam command="load"
-              file="$(find erc_jetson_bringup)/config/zed2.yaml"/>
-  </node>
+  <node name="zed2_imu_transform_broadcaster"
+        pkg="leo_gazebo"
+        type="zed2_imu_transform_broadcaster"/>
 
 </launch>
