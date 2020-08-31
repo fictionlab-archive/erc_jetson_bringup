@@ -8,7 +8,7 @@
   </node>
 
   <node name="zed2_imu_transform_broadcaster"
-        pkg="leo_gazebo"
+        pkg="erc_jetson_bringup"
         type="zed2_imu_transform_broadcaster"/>
 
 </launch>
