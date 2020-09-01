@@ -1,0 +1,5 @@
+<launch>
+
+  <include file="$(find erc_jetson_bringup)/launch/zed2.launch"/>
+
+</launch>
